@@ -11,10 +11,15 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
+import butterknife.OnFocusChange;
+import butterknife.OnItemLongClick;
+import butterknife.OnTextChanged;
+import butterknife.OnTouch;
 import butterknife.Optional;
 
 public class MainActivity extends AppCompatActivity {
 
+    @Nullable
     @BindView(R.id.optional_text_view)
     TextView optionalTextView;
 
@@ -33,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.show_toast)
-    void showToast() {
+    void onShowToastClicked() {
         showToast("show toast clicked");
     }
 
@@ -41,9 +46,33 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 
-        @OnCheckedChanged(R.id.checkBox)
+    @OnCheckedChanged(R.id.checkBox)
     void onCheckChanged(boolean isChanged) {
         showToast("is checked " + isChanged);
+    }
+
+    @OnFocusChange(R.id.edit_text_1)
+    void onFocusChange(boolean isFocused) {
+        showToast("edit_text_1 focused: " + isFocused);
+    }
+
+    // OnItemLongClick seems to be mostly legacy annotation, since it only works with AdapterView
+    // types, which are ListView, Spinner, etc.
+//    @OnItemLongClick(R.id.long_click_text)
+//    boolean onLongClick() {
+//        showToast("long-clicked");
+//        return true;
+//    }
+
+    @OnTextChanged(R.id.edit_text_1)
+    void onTextChanged(CharSequence text) {
+        showToast("onTextChanged: " + text);
+    }
+
+    @OnTouch(R.id.touch_me)
+    boolean onTouched() {
+        showToast("onTouched");
+        return true;
     }
 
     /* OPTIONAL FIELDS */
