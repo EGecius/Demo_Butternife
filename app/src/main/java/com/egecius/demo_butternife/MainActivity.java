@@ -12,7 +12,6 @@ import butterknife.ButterKnife;
 import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 import butterknife.OnFocusChange;
-import butterknife.OnItemLongClick;
 import butterknife.OnTextChanged;
 import butterknife.OnTouch;
 import butterknife.Optional;
@@ -29,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
-
         printFields();
     }
 
